@@ -1,6 +1,6 @@
 {% set name = "kokkos-kernels" %}
-{% set version = "4.1.00" %}
-{% set so_version = "4.1.00" %}
+{% set version = "4.2.01" %}
+{% set so_version = "4.2.01" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/kokkos/kokkos-kernels/archive/refs/tags/{{ version }}.tar.gz
-  sha256: d6a4108444ea226e43bf6a9c0dfc557f223a72b1142bf81aa78dd60e16ac2d56
+  sha256: 058052b3a40f5d4e447b7ded5c480f1b0d4aa78373b0bc7e43804d0447c34ca8
 
 build:
   skip: true  # [win]
@@ -24,9 +24,9 @@ requirements:
     - libgomp      # [linux]
     - ninja
   host:
-    - kokkos >=4.0.0,<5
+    - kokkos >=4.2.0,<5
   run:
-    - kokkos >=4.0.0,<5
+    - kokkos >=4.2.0,<5
 
 test:
   source_files:
