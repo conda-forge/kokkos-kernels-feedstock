@@ -42,6 +42,7 @@ requirements:
     - cuda-cudart-dev
     - cuda-driver-dev   # [not win]
     - libcublas-dev
+    - libcusparse-dev
     {% endif %}
   run:
     - kokkos >=4.0.0,<5
