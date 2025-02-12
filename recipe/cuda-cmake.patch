@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c48f6835e..ee432c36b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -126,6 +126,7 @@ ELSE()
+   # Do all the regular option processing
+   IF (NOT KOKKOSKERNELS_HAS_TRILINOS AND NOT KOKKOSKERNELS_HAS_PARENT)
+     # This is a standalone build
++    find_package(CUDAToolkit REQUIRED)
+     FIND_PACKAGE(Kokkos REQUIRED)
+     IF(Kokkos_COMPILE_LANGUAGE)
+       ENABLE_LANGUAGE(${Kokkos_COMPILE_LANGUAGE})
