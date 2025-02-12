@@ -20,6 +20,7 @@ requirements:
   build:
     - cmake >=3.21.1,<4
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - llvm-openmp  # [osx]
     - libgomp      # [linux]
     - ninja
