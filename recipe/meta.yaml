@@ -19,7 +19,7 @@ build:
   run_exports:
     - {{ pin_subpackage('kokkos-kernels') }}
   script_env:
-    - KokkosKernels_CUDA_ARGS=-DKokkosKernels_REQUIRE_DEVICES=CUDA   # [cuda_compiler_version != "None"]
+    - KokkosKernels_CUDA_ARGS=-DKokkosKernels_REQUIRE_DEVICES=CUDA  # [cuda_compiler_version != "None"]
     - CUDA_PATH=${PREFIX} # [cuda_compiler_version != "None"]
     - KokkosKernels_CUDA_ARGS=""  # [cuda_compiler_version == "None"]
 requirements:
