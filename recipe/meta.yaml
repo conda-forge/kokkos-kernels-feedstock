@@ -42,6 +42,7 @@ requirements:
     {% if cuda_major == 12 %}
     - cuda-cudart-dev
     - cuda-driver-dev   # [not win]
+    - cuda-cublas
     {% endif %}
   run:
     - kokkos >=4.0.0,<5
