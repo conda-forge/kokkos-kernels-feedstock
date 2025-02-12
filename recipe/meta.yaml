@@ -32,7 +32,7 @@ requirements:
     - libgomp      # [linux]
     - ninja
   host:
-    - kokkos >=4.0.0,<5
+    - kokkos >=4.0.0,<4.5
     # Will get nvcc linker warnings if the cudatoolkit version doesn't match
     - cuda-version {{ environ.get("cuda_compiler_version") }}.*  # [cuda_compiler_version != "None"]
     {% if cuda_major == 11 %}
@@ -46,7 +46,7 @@ requirements:
     - libcusolver-dev
     {% endif %}
   run:
-    - kokkos >=4.0.0,<5
+    - kokkos >=4.0.0,<4.5
 
 test:
   source_files:
