@@ -48,6 +48,16 @@ requirements:
     {% endif %}
   run:
     - kokkos >=4.0.0,<4.5
+    - cuda-version {{ cuda_compiler_version }}  # [cuda_compiler_version not in (undefined, 'None')]
+    {% if cuda_major == 11 %}
+    - cudatoolkit {{ environ.get("cuda_compiler_version") }}.*
+    {% endif %}
+    {% if cuda_major >= 12 %}
+    - cuda-cudart
+    - libcufft
+    - libcublas
+    {% endif %}
+
 
 test:
   source_files:
