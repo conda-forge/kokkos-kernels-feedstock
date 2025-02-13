@@ -23,6 +23,8 @@ build:
     - KokkosKernels_CUDA_ARGS=-DKokkosKernels_REQUIRE_DEVICES=CUDA  # [cuda_compiler_version != "None"]
     - CUDA_PATH=${PREFIX} # [cuda_compiler_version != "None"]
     - KokkosKernels_CUDA_ARGS=""  # [cuda_compiler_version == "None"]
+  rpaths:
+    - lib/
 requirements:
   build:
     - cmake >=3.21.1,<4
