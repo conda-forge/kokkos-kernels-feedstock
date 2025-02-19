@@ -14,7 +14,7 @@ source:
     - cuda-cmake.patch  # [cuda_compiler_version != "None"]
 build:
   missing_dso_whitelist:
-    - $PREFIX/lib/libcuda.so*
+    - *libcuda.so*
   skip: true  # [win]
   string: "cuda{{ cuda_major }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}"  # [cuda_compiler_version != "None"]
   string: "h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}"  # [cuda_compiler_version == "None"]
