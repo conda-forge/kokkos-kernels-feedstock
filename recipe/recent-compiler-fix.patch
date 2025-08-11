@@ -1,0 +1,13 @@
+--- kokkos-kernels-orig/sparse/src/KokkosSparse_spadd_handle.hpp	2025-08-10 07:42:23
++++ kokkos-kernels/sparse/src/KokkosSparse_spadd_handle.hpp	2025-08-10 15:10:28
+@@ -72,10 +72,6 @@
+    */
+   size_type get_c_nnz() { return this->result_nnz_size; }
+ 
+-  void set_sort_option(int option) { this->sort_option = option; }
+-
+-  int get_sort_option() { return this->sort_option; }
+-
+   /**
+    * \brief Default constructor.
+    */
