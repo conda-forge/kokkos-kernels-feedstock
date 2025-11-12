@@ -2,8 +2,7 @@ schema_version: 1
 
 context:
   name: kokkos-kernels
-  version: 4.6.02
-  so_version: 4.6.02
+  version: "4.7.01"
 
 package:
   name: ${{ name|lower }}
@@ -11,15 +10,15 @@ package:
 
 source:
   url: https://github.com/kokkos/kokkos-kernels/releases/download/${{ version }}/kokkos-kernels-${{ version }}.tar.gz
-  sha256: a953f445660ed5aaab10e18fc4a90c4c178291e9d9d97d20abd4e6027f1193ec
+  sha256: f3e1452db0e182c8e32c61632465e3a829159b9ae0645d9e4cd97b4fa09c36e1
 
 build:
-  number: 1
+  number: 0
   skip: win
 
 requirements:
   build:
-    - cmake >=3.21.1,<4
+    - cmake >=3.21.1
     - ${{ compiler('cxx') }}
     - ${{ stdlib('c') }}
     - ninja
@@ -27,14 +26,14 @@ requirements:
     - if: linux
       then: libgomp
     - if: osx
-      then: llvm-openmp
-    - kokkos >=4.0.0,<5
+      then: llvm-openmp >=20.1.8
+    - kokkos >=4.6.01,<5
   run:
-    - kokkos >=4.0.0,<5
+    - kokkos >=4.6.01,<5
     - if: linux
       then: libgomp
     - if: osx
-      then: llvm-openmp
+      then: llvm-openmp >=20.1.8
   run_exports:
     - ${{ pin_subpackage('kokkos-kernels') }}
 
