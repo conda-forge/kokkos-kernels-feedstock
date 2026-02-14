@@ -27,9 +27,9 @@ requirements:
       then: libgomp
     - if: osx
       then: llvm-openmp >=20.1.8
-    - kokkos >=4.6.02
+    - kokkos >=4.7.02
   run:
-    - kokkos >=4.6.02
+    - kokkos >=4.7.02
     - if: linux
       then: libgomp
     - if: osx
