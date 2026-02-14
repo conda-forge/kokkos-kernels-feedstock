@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: kokkos-kernels
-  version: "5.0.1"
+  version: "5.0.2"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/kokkos/kokkos-kernels/releases/download/${{ version }}/kokkos-kernels-${{ version }}.tar.gz
-  sha256: c9d0b507ab754b347b71b530683e9dea8dbf4d2e3cdadb863dcb494b07bbf0b2
+  sha256: 7c7af2c3659ecc620cc7b7016876330d9f288e8c6fd7b70b70907687df823b43
 
 build:
   number: 0
@@ -27,9 +27,9 @@ requirements:
       then: libgomp
     - if: osx
       then: llvm-openmp >=20.1.8
-    - kokkos >=4.6.01,<5
+    - kokkos >=4.7.02
   run:
-    - kokkos >=4.6.01,<5
+    - kokkos >=4.7.02
     - if: linux
       then: libgomp
     - if: osx
