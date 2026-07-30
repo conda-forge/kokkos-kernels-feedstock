@@ -45,7 +45,7 @@ tests:
       run:
         - ${{ compiler('cxx') }}
     script:
-      - $CXX example/batched_solve/team_GMRES.cpp -o team_GMRES -std=c++17 -I$PREFIX/include -L$PREFIX/lib -lkokkoscontainers -lkokkoscore -lkokkoskernels -fopenmp
+      - $CXX example/batched_solve/team_GMRES.cpp -o team_GMRES -std=c++20 -I$PREFIX/include -L$PREFIX/lib -lkokkoscontainers -lkokkoscore -lkokkoskernels -fopenmp
       - if: unix
         then: test -f $PREFIX/lib/cmake/KokkosKernels/KokkosKernelsConfig.cmake
       - if: linux
