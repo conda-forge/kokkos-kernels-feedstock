@@ -13,8 +13,7 @@ source:
   sha256: 57f278e7a25940f9a1237d8b370a1de7f09ea282626b4594e4880042181acdcd
 
 build:
-  number: 0
-  skip: win
+  number: 1
 
 requirements:
   build:
@@ -45,7 +44,11 @@ tests:
       run:
         - ${{ compiler('cxx') }}
     script:
-      - $CXX example/batched_solve/team_GMRES.cpp -o team_GMRES -std=c++20 -I$PREFIX/include -L$PREFIX/lib -lkokkoscontainers -lkokkoscore -lkokkoskernels -fopenmp
+      # we only verify the compilation, not the execution
+      - if: unix
+        then: $CXX example/batched_solve/team_GMRES.cpp -o team_GMRES -std=c++20 -I$PREFIX/include -L$PREFIX/lib -lkokkoscontainers -lkokkoscore -lkokkoskernels -fopenmp
+      - if: win
+        then: '%CXX% example/batched_solve/team_GMRES.cpp /std:c++20 /I%LIBRARY_PREFIX%\\include /link /LIBPATH:%LIBRARY_BIN% kokkoscontainers.lib kokkoscore.lib kokkoskernels.lib /openmp /OUT:team_GMRES.exe'
       - if: unix
         then: test -f $PREFIX/lib/cmake/KokkosKernels/KokkosKernelsConfig.cmake
       - if: linux
@@ -54,6 +57,10 @@ tests:
         then: test -f $PREFIX/lib/libkokkoskernels.dylib
       - if: unix
         then: test -f $PREFIX/include/KokkosKernels_Handle.hpp
+      - if: win
+        then: 'if not exist %LIBRARY_PREFIX%\lib\cmake\KokkosKernels\KokkosKernelsConfig.cmake exit /b 1'
+      - if: win
+        then: 'if not exist %LIBRARY_PREFIX%\include\KokkosKernels_Handle.hpp exit /b 1'
 
 about:
   summary: >
