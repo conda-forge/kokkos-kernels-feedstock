@@ -1,5 +1,7 @@
 @echo on
 
+set CXXFLAGS=%CXXFLAGS% /bigobj
+
 cmake %CMAKE_ARGS% -S %SRC_DIR% -B build ^
   -GNinja ^
   -DCMAKE_BUILD_TYPE=Release ^
