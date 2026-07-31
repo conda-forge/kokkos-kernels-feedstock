@@ -42,13 +42,13 @@ tests:
         - example/batched_solve
     requirements:
       run:
-        - cmake
         - ${{ compiler('cxx') }}
-        - ninja
     script:
       # we only verify the compilation, not the execution
-      - cmake -S example/batched_solve -B test-build -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$PREFIX
-      - cmake --build test-build
+      - if: unix
+        then: $CXX example/batched_solve/team_GMRES.cpp -o team_GMRES -std=c++20 -I$PREFIX/include -L$PREFIX/lib -lkokkoscontainers -lkokkoscore -lkokkoskernels -fopenmp
+      - if: win
+        then: '%CXX% example/batched_solve/team_GMRES.cpp /std:c++20 /I%LIBRARY_PREFIX%\\include /link /LIBPATH:%LIBRARY_BIN% kokkoscontainers.lib kokkoscore.lib kokkoskernels.lib /openmp /OUT:team_GMRES.exe'
       - if: unix
         then: test -f $PREFIX/lib/cmake/KokkosKernels/KokkosKernelsConfig.cmake
       - if: linux
@@ -58,9 +58,9 @@ tests:
       - if: unix
         then: test -f $PREFIX/include/KokkosKernels_Handle.hpp
       - if: win
-        then: if not exist %LIBRARY_PREFIX%\lib\cmake\KokkosKernels\KokkosKernelsConfig.cmake exit /b 1
+        then: 'if not exist %LIBRARY_PREFIX%\lib\cmake\KokkosKernels\KokkosKernelsConfig.cmake exit /b 1'
       - if: win
-        then: if not exist %LIBRARY_PREFIX%\include\KokkosKernels_Handle.hpp exit /b 1
+        then: 'if not exist %LIBRARY_PREFIX%\include\KokkosKernels_Handle.hpp exit /b 1'
 
 about:
   summary: >
