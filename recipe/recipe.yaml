@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: kokkos-kernels
-  version: "5.2.0"
+  version: "5.2.1"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://github.com/kokkos/kokkos-kernels/releases/download/${{ version }}/kokkos-kernels-${{ version }}.tar.gz
-  sha256: 57f278e7a25940f9a1237d8b370a1de7f09ea282626b4594e4880042181acdcd
+  sha256: 346068d9c3bf25293f0460a8edc16cb02edf327d2c4197840ecd26ac37844df7
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -58,10 +58,9 @@ tests:
       - if: unix
         then: test -f $PREFIX/include/KokkosKernels_Handle.hpp
       - if: win
-        then: 'if not exist %LIBRARY_PREFIX%\lib\cmake\KokkosKernels\KokkosKernelsConfig.cmake exit /b 1'
-      - if: win
-        then: 'if not exist %LIBRARY_PREFIX%\include\KokkosKernels_Handle.hpp exit /b 1'
-
+        then:
+          - 'if not exist %LIBRARY_PREFIX%\lib\cmake\KokkosKernels\KokkosKernelsConfig.cmake exit /b 1'
+          - 'if not exist %LIBRARY_PREFIX%\include\KokkosKernels_Handle.hpp exit /b 1'
 about:
   summary: >
     Kokkos Kernels is a software library of linear algebra and graph algorithms used across many HPC applications to
