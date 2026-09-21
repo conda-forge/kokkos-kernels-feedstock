@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: kokkos-kernels
-  version: "5.2.1"
+  version: "5.2.2"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/kokkos/kokkos-kernels/releases/download/${{ version }}/kokkos-kernels-${{ version }}.tar.gz
-  sha256: 346068d9c3bf25293f0460a8edc16cb02edf327d2c4197840ecd26ac37844df7
+  sha256: 4b95ac27319714a393b9a9ddf3a77fb7ffe751fe215a02084dd781856814d55f
 
 build:
   number: 0
