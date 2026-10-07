@@ -25,14 +25,14 @@ requirements:
     - if: linux
       then: libgomp
     - if: osx
-      then: llvm-openmp >=20.1.8
+      then: llvm-openmp
     - kokkos >=5.2,<5.3
   run:
     - kokkos >=5.2,<5.3
     - if: linux
       then: libgomp
     - if: osx
-      then: llvm-openmp >=20.1.8
+      then: llvm-openmp
   run_exports:
     - ${{ pin_subpackage('kokkos-kernels') }}
 
